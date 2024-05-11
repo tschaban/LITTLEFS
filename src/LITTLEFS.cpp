@@ -41,7 +41,12 @@ LITTLEFSImpl::LITTLEFSImpl()
 
 bool LITTLEFSImpl::exists(const char* path)
 {
-    File f = open(path, "r");
+    /* Fix AFE Firmware for LITTLEFS
+       3rd parameters doesn't recognized as pre-defined in the method definition. 
+       Hardcoded predefined value to false.
+       No more time to investigate 
+    */
+    File f = open(path, "r", false);
     return (f == true);
 }
 
